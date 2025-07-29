@@ -12,11 +12,11 @@ A simple and interactive daily planner built using **Flask** and **CSV file stor
 - Maintain a full to-do list with deadlines
 
 ## 📁 Project Structure
-/daily-planner/
--app.py
--templates: login.html,signup.html,index.html,calendar.html,day.html,todo.html
--static: bg.jpeg
--README.md
+daily-planner
+ - app.py
+ - templates: login.html,signup.html,index.html,calendar.html,day.html,todo.html
+ - static: bg.jpeg
+ - README.md
 
 
 
