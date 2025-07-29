@@ -41,10 +41,4 @@ A simple and interactive daily planner built using **Flask** and **CSV file stor
 - **Backend**: Python, Flask
 - **Data Storage**: CSV files
 
-## 🏃 Getting Started
 
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/yourusername/daily-planner.git
-cd daily-planner
