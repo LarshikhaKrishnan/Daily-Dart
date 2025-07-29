@@ -13,19 +13,10 @@ A simple and interactive daily planner built using **Flask** and **CSV file stor
 
 ## 📁 Project Structure
 /daily-planner/
-app.py # Flask backend application
-planner.csv # Stores user tasks
-users.csv # Stores user credentials (hashed)
-- static/
- -- bg.jpeg # Background image used across pages
-- templates/
---login.html
---signup.html
---calendar.html
---day.html
---todo.html
---index.html # Optional or unused directly
--README.md # Project documentation
+-app.py
+-templates: login.html,signup.html,index.html,calendar.html,day.html,todo.html
+-static: bg.jpeg
+-README.md
 
 
 
