@@ -1,5 +1,7 @@
 # Daily-Dart
 An intuitive and interactive web application designed to help users manage their daily tasks, organize their schedules, and stay productive. With features like task management, a month-wise calendar, and a to-do list, this planner ensures users can efficiently track and manage their tasks.
+Done by: Larshikha Krishnan V, Kavivarshini M, Dhivyasree BK
+
 # 🗓️ Daily Planner Web App
 
 A simple and interactive daily planner built using **Flask** and **CSV file storage**. This application allows users to:
@@ -18,12 +20,12 @@ users.csv # Stores user credentials (hashed)
  -- bg.jpeg # Background image used across pages
 - templates/
 --login.html
-│ ├── signup.html
-│ ├── calendar.html
-│ ├── day.html
-│ ├── todo.html
-│ └── index.html # Optional or unused directly
-├── README.md # Project documentation
+--signup.html
+--calendar.html
+--day.html
+--todo.html
+--index.html # Optional or unused directly
+-README.md # Project documentation
 
 
 
