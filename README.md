@@ -41,4 +41,5 @@ users.csv # Stores user credentials (hashed)
 - **Backend**: Python, Flask
 - **Data Storage**: CSV files
 
-
+## Know more about our project
+- **Link**: https://docs.google.com/presentation/d/14h8uEt5UZkj2VOtSrh3Uk0vvaV8tAV6c/edit?usp=sharing&ouid=112578149008624284157&rtpof=true&sd=true
