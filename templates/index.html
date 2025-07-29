@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Daily Planner</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2rem; }
+        table { width: 100%; border-collapse: collapse; margin-top: 2rem; }
+        th, td { padding: 10px; border: 1px solid #ccc; text-align: left; }
+        th { background-color: #f2f2f2; }
+        input, button { padding: 0.5rem; margin: 0.2rem 0; }
+    </style>
+</head>
+<body>
+    <h1>🗓️ Daily Planner for {{ session.user }}</h1>
+    <a href="/logout">Logout</a>
+
+    <form method="POST" action="/add">
+        <label>Task:</label><br>
+        <input type="text" name="task" required><br><br>
+        <label>Due Date:</label><br>
+        <input type="date" name="due_date" value="{{ today }}" required><br><br>
+        <button type="submit">Add Task</button>
+    </form>
+
+    {% if tasks %}
+        <h2>📋 Your Tasks</h2>
+        <table>
+            <tr>
+                <th>Task</th>
+                <th>Due Date</th>
+            </tr>
+            {% for task in tasks %}
+            <tr>
+                <td>{{ task.name }}</td>
+                <td>{{ task.due_date }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No tasks added yet!</p>
+    {% endif %}
+</body>
+</html>

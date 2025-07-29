@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Calendar - Daily Planner</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url("{{ url_for('static', filename='bg.jpeg') }}");
+      background-size: cover;
+      background-position: center;
+      margin: 0;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      margin: 50px auto;
+      padding: 20px;
+      max-width: 800px;
+      border-radius: 12px;
+    }
+    nav {
+      background: #4CAF50;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 15px;
+      text-align: center;
+    }
+    footer {
+      text-align: center;
+      padding: 10px;
+      color: #444;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="{{ url_for('calendar_view') }}">Home</a>
+    <a href="{{ url_for('todo') }}">To-Do List</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+  </nav>
+
+  <div class="container">
+    <h2>📅 {{ month }}/{{ year }}</h2>
+    <table>
+      <tr>
+        <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th>
+        <th>Thu</th><th>Fri</th><th>Sat</th>
+      </tr>
+      {% for week in month_days %}
+      <tr>
+        {% for day in week %}
+          {% if day == 0 %}
+            <td></td>
+          {% else %}
+            <td><a href="{{ url_for('day_view', day_date=year ~ '-' ~ '%02d' % month ~ '-' ~ '%02d' % day) }}">{{ day }}</a></td>
+          {% endif %}
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </table>
+    <div style="text-align:center; margin-top: 20px;">
+      <a href="{{ url_for('calendar_view', month=month-1 if month > 1 else 12, year=year if month > 1 else year-1) }}">⬅️ Prev</a>
+      |
+      <a href="{{ url_for('calendar_view', month=month+1 if month < 12 else 1, year=year if month < 12 else year+1) }}">Next ➡️</a>
+    </div>
+  </div>
+
+  <footer>© 2025 Daily Planner</footer>
+</body>
+</html>

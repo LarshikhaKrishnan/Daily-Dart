@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tasks for {{ date }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("{{ url_for('static', filename='bg.jpeg') }}");
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+        }
+
+        nav {
+            background: #4CAF50;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 12px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .task-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+        }
+
+        .delete-button {
+            background-color: #dc3545;
+        }
+
+        .delete-button:hover {
+            background-color: #c82333;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            margin-top: 40px;
+            color: #444;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="{{ url_for('calendar_view') }}">Home</a>
+        <a href="{{ url_for('day_view', day_date=date) }}">Day View</a>
+        <a href="{{ url_for('todo') }}">To-Do List</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </nav>
+
+    <div class="container">
+        <h2>Tasks for {{ date }}</h2>
+
+        <div style="text-align: center; margin-bottom: 20px;">
+            <a href="{{ url_for('day_view', day_date=prev_day) }}">⬅️ Previous Day</a>
+            |
+            <a href="{{ url_for('day_view', day_date=next_day) }}">Next Day ➡️</a>
+        </div>
+
+
+        <form method="POST">
+            <input type="text" name="task" placeholder="Enter a new task" required>
+            <button type="submit">Add Task</button>
+        </form>
+
+        {% if tasks %}
+        {% for task in tasks %}
+        <div class="task-item">
+            <span>{{ task.name }}</span>
+            <form method="POST" action="{{ url_for('delete') }}">
+                <input type="hidden" name="task" value="{{ task.name }}">
+                <input type="hidden" name="due_date" value="{{ date }}">
+                <button type="submit" class="delete-button">Delete</button>
+            </form>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p style="text-align:center;">No tasks for this day.</p>
+        {% endif %}
+    </div>
+
+    <footer>
+        &copy; 2025 Daily Planner
+    </footer>
+
+</body>
+
+</html>
